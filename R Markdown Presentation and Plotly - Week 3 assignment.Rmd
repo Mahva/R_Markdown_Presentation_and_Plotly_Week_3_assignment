@@ -1,0 +1,32 @@
+---
+title: 'Week 3 Assignment: R Markdown Presentation & Plotly'
+author: "MahVal"
+date: "October 31, 2018"
+output: html_document
+---
+
+## Introduction
+
+The goal of the project is to create a web page presentation using R Markdown that features a plot created with Plotly.
+
+```{r}
+# Loading required package
+r = getOption("repos")
+r["CRAN"] = "http://cran.us.r-project.org"
+options(repos = r)
+install.packages("plotly")
+
+install.packages("plotly")
+library(plotly)
+```
+
+```{r}
+
+plot_ly(data = mtcars, x = ~wt, y = ~mpg, 
+        color = ~as.factor(cyl), size = ~hp,
+        text = ~paste("Weight: ", wt, '<br>MPG:', mpg),
+        type = "scatter", mode = "markers") %>%
+  layout(title = "Car Data")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
